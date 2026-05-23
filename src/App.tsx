@@ -33,7 +33,7 @@ export default function App() {
       }
 
       // 3. Simple intersection tracker for highlighting navbar tabs
-      const sections = ["overview", "skills", "projects", "experience"];
+      const sections = ["overview", "skills", "experience", "projects"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -56,8 +56,8 @@ export default function App() {
   const menuItems = [
     { id: "overview", label: "OVERVIEW" },
     { id: "skills", label: "SKILLS" },
-    { id: "projects", label: "PROJECTS" },
     { id: "experience", label: "CAREER" },
+    { id: "projects", label: "PROJECTS" },
   ];
 
   const handleNavClick = (id: string) => {
@@ -142,8 +142,8 @@ export default function App() {
       <main className="relative">
         <Overview />
         <Skills />
-        <Projects />
         <Experience />
+        <Projects />
       </main>
 
       {/* Fast Back To Top pill */}

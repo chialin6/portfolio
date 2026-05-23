@@ -10,11 +10,11 @@ import { projectsData } from "../data";
 import { Project } from "../types";
 
 export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState<"All" | "Frontend" | "Backend" | "Full-Stack" | "Cloud / AI">("All");
+  const [selectedCategory, setSelectedCategory] = useState<"All" | "Frontend" | "Cloud / AI" | "Embedded Systems" | "Research">("All");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [copiedSnippet, setCopiedSnippet] = useState(false);
 
-  const categories = ["All", "Frontend", "Backend", "Full-Stack", "Cloud / AI"] as const;
+  const categories = ["All", "Frontend", "Cloud / AI", "Embedded Systems", "Research"] as const;
 
   const filteredProjects = selectedCategory === "All"
     ? projectsData
@@ -35,7 +35,7 @@ export default function Projects() {
         <div className="mb-14">
           <div className="flex items-center gap-2 mb-2 font-mono text-xs text-white">
             <FolderGit2 className="w-4 h-4" />
-            <span>02 / PROJECTS_ARCHIVE</span>
+            <span>03 / PROJECTS_ARCHIVE</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
             Architectural Shipments & Projects
@@ -145,7 +145,7 @@ export default function Projects() {
                     <span className="text-xs font-mono text-zinc-300 bg-zinc-900 px-2.5 py-0.5 rounded-full border border-zinc-800">
                       {activeProject.category}
                     </span>
-                    <span className="text-xs text-zinc-550 font-mono">Case Study</span>
+                    <span className="text-xs text-zinc-550 font-mono">Details</span>
                   </div>
                   <button
                     onClick={() => setActiveProject(null)}
@@ -205,7 +205,7 @@ export default function Projects() {
                             className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-zinc-200 text-black font-semibold rounded-lg text-xs transition cursor-pointer"
                           >
                             <ExternalLink className="w-4 h-4" />
-                            <span>Live Simulation</span>
+                            <span>{activeProject.liveUrlLabel ?? "Live Site"}</span>
                           </a>
                         )}
                       </div>

@@ -9,9 +9,10 @@ export interface Project {
   description: string;
   longDescription: string;
   tags: string[];
-  category: "Frontend" | "Backend" | "Full-Stack" | "Cloud / AI";
+  category: "Frontend" | "Backend" | "Full-Stack" | "Cloud / AI" | "Embedded Systems" | "Research";
   githubUrl?: string;
   liveUrl?: string;
+  liveUrlLabel?: string;
   highlights: string[];
   demoCodeSnippet?: string;
   imageAlt?: string;
@@ -33,6 +34,7 @@ export interface Job {
   description: string;
   details: string[];
   techStack: string[];
+  links?: { label: string; url: string }[];
 }
 
 export type CodeFocusClass = "all" | "frontend" | "backend" | "cloud";

@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Briefcase, Calendar, MapPin, ChevronDown, ChevronUp, Star, Award } from "lucide-react";
+import { Briefcase, Calendar, MapPin, ChevronDown, ChevronUp, Star, Award, ExternalLink } from "lucide-react";
 import { experienceData } from "../data";
 
 export default function Experience() {
@@ -28,7 +28,7 @@ export default function Experience() {
         <div className="mb-16">
           <div className="flex items-center gap-2 mb-2 font-mono text-xs text-white">
             <Briefcase className="w-4 h-4" />
-            <span>03 / WORK_HISTORY</span>
+            <span>02 / WORK_HISTORY</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
             Work Experience Timeline
@@ -136,7 +136,7 @@ export default function Experience() {
                             <span className="text-[10px] font-mono text-zinc-500 block mb-2 font-semibold">ROLE TECHNOLOGIES:</span>
                             <div className="flex flex-wrap gap-1.5">
                               {job.techStack.map((tech) => (
-                                <span 
+                                <span
                                   key={tech}
                                   className="text-[10px] font-mono text-zinc-300 bg-zinc-950 px-2 py-0.5 rounded-md border border-zinc-900"
                                 >
@@ -145,6 +145,27 @@ export default function Experience() {
                               ))}
                             </div>
                           </div>
+
+                          {/* External links */}
+                          {job.links && job.links.length > 0 && (
+                            <div className="pt-3 border-t border-zinc-950">
+                              <span className="text-[10px] font-mono text-zinc-500 block mb-2 font-semibold">REFERENCES:</span>
+                              <div className="flex flex-wrap gap-2">
+                                {job.links.map((link) => (
+                                  <a
+                                    key={link.url}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center gap-1.5 text-[10px] font-mono text-zinc-300 hover:text-white bg-zinc-950 hover:bg-zinc-900 px-2.5 py-1 rounded-md border border-zinc-800 hover:border-zinc-700 transition"
+                                  >
+                                    <ExternalLink className="w-3 h-3" />
+                                    {link.label}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     )}

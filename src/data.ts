@@ -59,7 +59,11 @@ export const experienceData: Job[] = [
       "Designed integration testing framework for Payout Methods, intercepting multiple faulty rollouts pre-production.",
       "Accelerated developer velocity as an early adopter of LLM coding tools; hosted technical testing workshops that cut onboarding ramp-up times for new peers."
     ],
-    techStack: ["Ruby", "Java", "MongoDB", "S3", "GraphQL", "REST APIs", "API Design"]
+    techStack: ["Ruby", "Java", "MongoDB", "S3", "GraphQL", "REST APIs", "API Design"],
+    links: [
+      { label: "Outbound Setup Intents API Docs", url: "https://docs.stripe.com/api/v2/money-management/outbound-setup-intents?api-version=2026-02-25.preview" },
+      { label: "Payout Methods API Docs", url: "https://docs.stripe.com/api/v2/money-management/payout-methods?api-version=2026-02-25.preview" }
+    ]
   },
   {
     id: "exp-2",
@@ -69,11 +73,15 @@ export const experienceData: Job[] = [
     period: "Jul 2021 - Jan 2025",
     description: "Built and maintained critical data pipeline infrastructure, microservices, and reporting systems supporting global financial data operations.",
     details: [
-      "Designed critical microservice and database to automate client export billing, reducing manual operations by 95% and drastically cutting system debugging time.",
-      "Re-architected data reporting pipeline with Airflow to add advanced observability and fallback retries; integrated corporate SSO for secure role-based access control.",
-      "Managed cross-functional data integrations for upstream chat events, ensuring strict compliance with global privacy laws.",
-      "Built automated monitoring watchdog for export pipelines, significantly improving report delivery SLAs.",
-      "Led engineering culture initiatives by organizing 2 internal hackathons and participating in technical recruiting panels."
+      "Designed and built a microservice and database to automate client data export billing, cutting manual operations by 95% and improving processing efficiency.",
+      "Automated generation and distribution of formatted export details across multiple data sources and export types.",
+      "Introduced an auditing feature tracking all generated and delivered reports, enhancing data integrity and reducing debugging time by 60%.",
+      "Re-architected reporting orchestration pipeline with Airflow, improving observability and retry mechanisms to enhance overall pipeline reliability.",
+      "Integrated Single Sign-On (SSO) for authentication and role-based access management, increasing security and streamlining user access.",
+      "Represented team in a cross-functional project integrating new chat event types from upstream into client chat reports, ensuring data privacy and security compliance.",
+      "Built a watchdog system to monitor daily export jobs, achieving a 10% increase in on-time report generation and improving operational efficiency.",
+      "Led the Culture Council, organizing team-building events, co-hosting 2 hackathons, and authoring quarterly newsletters with team metrics and actionable insights.",
+      "Actively participated in recruiting events, conducted candidate interviews, and supported diversity and inclusion initiatives."
     ],
     techStack: ["Python", "C++", "Apache Spark", "Airflow", "Kafka", "RabbitMQ", "SQL", "S3", "Microservices"]
   },
@@ -85,7 +93,8 @@ export const experienceData: Job[] = [
     period: "Jun 2020 - Sep 2020",
     description: "Automated ISP code generation and testing infrastructure, accelerating engineering productivity across large-scale functional modules.",
     details: [
-      "Automated ISP code generation pipelines, saving 800+ engineering hours across 200+ functional modules."
+      "Automated image signal processor code generation to accelerate the entire development process.",
+      "Saved more than 800 days of engineering effort by automatically generating bug-free C++ code for more than 200 modules."
     ],
     techStack: ["Python", "C++", "CI/CD", "Automation Pipelines"]
   }
@@ -94,126 +103,60 @@ export const experienceData: Job[] = [
 export const projectsData: Project[] = [
   {
     id: "proj-1",
-    title: "VortexAnalytics Cloud Core",
-    description: "A real-time metrics visualizer that pipes multi-cloud metrics into ultra-performant charting interfaces with offline fallback.",
-    longDescription: "VortexAnalytics compiles cross-cloud performance metrics (AWS CloudWatch, GCP Cloud Operations, Kubernetes clusters) into a integrated single-pane interface. Built with precision performance standards directly in React 19, managing hundreds of updates per second smoothly. Utilizes local IndexedDB storages so team members don't lose key telemetry graphs during structural connection drops.",
-    tags: ["React 19", "D3.js", "TypeScript", "Node.js", "SST Serverless"],
-    category: "Full-Stack",
-    githubUrl: "https://github.com/aliceliu/vortex-analytics",
-    liveUrl: "https://vortex-demo.aliceliu.dev",
+    title: "Job Match Agent AI",
+    description: "An AI agent built with Google Vertex AI SDK that evaluates job postings against my background and tells me whether a role is a good fit.",
+    longDescription: "A personal AI agent for job hunting that uses Google Vertex AI to analyze job descriptions and match them against my skills, experience, and preferences. The agent reasons about fit across multiple dimensions — tech stack overlap, role level, company stage — and returns a structured recommendation so I can quickly triage opportunities.",
+    tags: ["TypeScript", "Google Vertex AI", "AI Agent", "LLM"],
+    category: "Cloud / AI",
+    githubUrl: "https://github.com/chialin6/JobMatchAgentAI",
     highlights: [
-      "Supports render updates of up to 400 events per second with pristine 60FPS browser response.",
-      "Bespoke SVG-based charting module written from scratch to bypass bulky commercial graphing packages.",
-      "Intelligent background synchronizer that queues outbound alerts, preventing telemetry gaps on transient networks."
-    ],
-    demoCodeSnippet: `// Custom high-frequency batch update reducer
-export function useBatchTelemetry(intervalMs = 100) {
-  const [metrics, setMetrics] = useState<Metric[]>([]);
-  const queue = useRef<Metric[]>([]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (queue.current.length > 0) {
-        setMetrics(current => {
-          const merged = [...current, ...queue.current];
-          return merged.slice(-100); // Retain active history ceiling
-        });
-        queue.current = [];
-      }
-    }, intervalMs);
-    return () => clearInterval(timer);
-  }, [intervalMs]);
-
-  return { metrics, addMetric: (m: Metric) => queue.current.push(m) };
-}`
+      "Uses Google Vertex AI SDK to power multi-step reasoning over job descriptions.",
+      "Evaluates fit across tech stack, seniority level, and role scope against personal profile.",
+      "Returns structured match output to quickly triage job opportunities during search."
+    ]
   },
   {
     id: "proj-2",
-    title: "Serverless Prisma-Edge Middleware",
-    description: "Lightweight database connectivity proxy optimized for high-concurrency Edge runtimes with intelligent connection pooling.",
-    longDescription: "Edge executions like Cloudflare Workers can experience database driver overhead. This Node-based gateway layer intercepts calls, pools outgoing query handles efficiently, and serves automated REST caching. Yields incredibly fast serverless responses with robust security standardizations and schema sanitizations built-in.",
-    tags: ["Node.js", "Prisma", "PostgreSQL", "Docker", "Sentry"],
-    category: "Backend",
-    githubUrl: "https://github.com/aliceliu/prisma-edge",
-    liveUrl: "https://prisma-edge-docs.aliceliu.dev",
+    title: "Personal Portfolio Website",
+    description: "This portfolio site — a responsive single-page app built with React, TypeScript, and Tailwind CSS, deployed on GitHub Pages.",
+    longDescription: "Designed and built from scratch as a living résumé and project showcase. Uses Vite for fast local development, Framer Motion for smooth animations, and Tailwind CSS for styling. Deployed continuously to GitHub Pages. All content is data-driven, making it easy to update experience, skills, and projects without touching component code.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion"],
+    category: "Frontend",
+    githubUrl: "https://github.com/chialin6/portfolio",
+    liveUrl: "https://chialin6.github.io/portfolio/",
+    liveUrlLabel: "Live Site",
     highlights: [
-      "Cuts average Cold Start times on serverless handlers from 450ms down to a mere 35ms.",
-      "Dynamic auto-scaling connection pooling handles up to 10,000 parallel database executions smoothly.",
-      "Embedded logging relays securely push performance metrics directly to Sentry or OpenTelemetry."
-    ],
-    demoCodeSnippet: `// Multi-tenant database pooling gateway routing
-export async function executePrismaQuery(tenantId: string, queryPayload: Query) {
-  const cachedPool = await ConnectionRegistry.getOrCreatePool(tenantId);
-  try {
-    const result = await cachedPool.execute(queryPayload.sql, queryPayload.params);
-    return { success: true, rows: result.rows, durationMs: result.executionTime };
-  } catch (err) {
-    Telemetry.reportError("DB_QUERY_FAILURE", { tenantId, err });
-    throw new DatabaseDriverException("Edge query route failed securely", err);
-  }
-}`
+      "Built with AI",
+      "Animated skill dashboard, timeline-based work history, and filterable project grid.",
+      "Deployed to GitHub Pages with a resume PDF download served from the public directory."
+    ]
   },
   {
     id: "proj-3",
-    title: "QuantumScribe Modern Headless CMS",
-    description: "A blazing fast, responsive content management canvas utilizing localized block editor engines and full MDX formatting presets.",
-    longDescription: "QuantumScribe delivers visual article writing pipelines for highly demanding engineering documents. Built strictly upon modular architecture featuring fully structural nested block nodes. Seamlessly exports structured content into MDX, JSON Schema, or clean raw YAML formats in real-time.",
-    tags: ["React", "Zustand", "Tailwind CSS", "MDX Parser", "Vite"],
-    category: "Frontend",
-    githubUrl: "https://github.com/aliceliu/quantum-scribe",
-    liveUrl: "https://scribe.aliceliu.dev",
+    title: "Temperature & Humidity Display",
+    description: "Embedded application on the CM0DK (ARM Cortex-M0) module that reads and displays real-time temperature and humidity sensor data.",
+    longDescription: "A bare-metal embedded project built in 2017 on the ARM Cortex-M0 based CM0DK development board. Interfaced directly with temperature and humidity sensors over I2C, processed raw ADC readings, and rendered live sensor values on a connected display. Written in C without an RTOS.",
+    tags: ["C#", "ARM Cortex-M0", "CM0DK", "Embedded Systems"],
+    category: "Embedded Systems",
     highlights: [
-      "Zero-dependency block renderer designed specifically for highly readable text layouts.",
-      "Full keyboard interactive shortcuts (Vim or Standard modern styles) for instant authoring efficiency.",
-      "Generates optimized responsive web outputs matching WCAG 2.1 AA accessibility guidelines."
-    ],
-    demoCodeSnippet: `// Type-safe editor node transformations
-export interface ScribeBlock {
-  id: string;
-  type: "header" | "paragraph" | "code" | "callout";
-  content: string;
-}
-
-export function transformNodeToMDX(block: ScribeBlock): string {
-  switch (block.type) {
-    case "header": return \`# \${block.content}\\n\`;
-    case "code": return \`\\\`\\\`\\\`typescript\\n\${block.content}\\n\\\`\\\`\\\`\\n\`;
-    case "callout": return \`> [!TIP]\\n> \${block.content.split('\\n').join('\\n> ')}\\n\`;
-    default: return \`\${block.content}\\n\\n\`;
-  }
-}`
+      "Interfaced with I2C temperature and humidity sensors on ARM Cortex-M0 hardware.",
+      "Processed raw ADC sensor readings and rendered live values on an attached display.",
+      "Written in bare-metal C without an RTOS on the CM0DK development board (2017)."
+    ]
   },
   {
     id: "proj-4",
-    title: "Athena Auto-IaC Provisioner",
-    description: "An visual orchestration tool that lets teams layout complex GCP infrastructure topographies and compiles clean, bulletproof Terraform plans.",
-    longDescription: "Athena eliminates manual errors during Terraform infrastructure modeling. Users visual drag-and-drop nodes representing GCP buckets, compute VMs, VPC networks, and firewalls on an infinite zoom stage. Instantly parses connected architectures to spit out production-grade, secure declarative Terraform configuration structures.",
-    tags: ["TypeScript", "Terraform", "Canvas API", "GCP Stack", "Vite"],
-    category: "Cloud / AI",
-    githubUrl: "https://github.com/aliceliu/athena-iac",
-    liveUrl: "https://athena.aliceliu.dev",
+    title: "Outfit-Based Fashion Popularity Prediction",
+    description: "Computer vision research on predicting outfit popularity using deep learning — accepted as an oral paper at IEEE ICIP 2019.",
+    longDescription: "Published research investigating whether outfit composition can predict social media popularity. Built a CNN-based pipeline to extract visual features from outfit images and trained models to predict engagement metrics. Accepted as an oral presentation at the IEEE International Conference on Image Processing 2019 — a competitive venue for computer vision research.",
+    tags: ["Python", "Computer Vision", "Deep Learning", "CNN", "IEEE ICIP 2019"],
+    category: "Research",
+    liveUrl: "https://ieeexplore.ieee.org/document/8803461",
+    liveUrlLabel: "View Publication",
     highlights: [
-      "Compiles visual drawings into syntactically valid HCL files within 50 milliseconds.",
-      "Includes instant GCP security rule auditing warnings (Snyk/Chekov style) directly during canvas modeling.",
-      "Fully responsive infinite-grid canvas implementing zoom, panning, and automatic alignment grids."
-    ],
-    demoCodeSnippet: `// Node connection validation and HCL code compilation
-export function compileServiceNode(node: ServiceNode): string {
-  return \`resource "google_compute_instance" "\${node.id}" {
-  name         = "\${node.name}"
-  machine_type = "\${node.instanceType || "e2-medium"}"
-  zone         = "\${node.region || "us-central1-a"}"
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
-
-  network_interface {
-    network = "google_compute_network.custom_vpc.id"
-  }
-}\`;
-}`
+      "Accepted as an oral paper at IEEE International Conference on Image Processing 2019.",
+      "Built a CNN-based pipeline to extract visual features from outfit images for popularity prediction.",
+      "Explored the relationship between outfit composition and social media engagement metrics."
+    ]
   }
 ];
