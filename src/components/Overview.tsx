@@ -199,7 +199,7 @@ export default function Overview() {
               />
 
               {/* Code strip */}
-              <div className="hidden sm:block px-5 py-4 font-mono text-xs text-zinc-300 leading-6 border-t border-zinc-800 bg-zinc-950">
+              <div className="px-5 py-4 font-mono text-xs text-zinc-300 leading-6 border-t border-zinc-800 bg-zinc-950">
                 <p className="text-zinc-600">// currently</p>
                 <p>
                   <span className="text-pink-400">struct</span> <span className="text-zinc-100">Jaelyn</span> {"{"}
