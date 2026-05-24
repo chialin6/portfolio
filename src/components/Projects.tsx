@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { FolderGit2, ArrowUpRight, Github, ExternalLink, X, Code2, Sparkles, CheckCircle2 } from "lucide-react";
+import { FolderGit2, ArrowUpRight, Github, ExternalLink, X, Code2, Sparkles, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { projectsData } from "../data";
 import { Project } from "../types";
 
@@ -19,6 +19,26 @@ export default function Projects() {
   const filteredProjects = selectedCategory === "All"
     ? projectsData
     : projectsData.filter(p => p.category === selectedCategory);
+
+  const activeIndex = activeProject ? filteredProjects.findIndex(p => p.id === activeProject.id) : -1;
+
+  const navigateTo = (idx: number) => {
+    if (idx >= 0 && idx < filteredProjects.length) {
+      setCopiedSnippet(false);
+      setActiveProject(filteredProjects[idx]);
+    }
+  };
+
+  useEffect(() => {
+    if (!activeProject) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") navigateTo(activeIndex - 1);
+      if (e.key === "ArrowRight") navigateTo(activeIndex + 1);
+      if (e.key === "Escape") setActiveProject(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [activeProject, activeIndex]);
 
   const handleCopyCode = (code: string) => {
     navigator.clipboard.writeText(code);
@@ -145,14 +165,32 @@ export default function Projects() {
                     <span className="text-xs font-mono text-zinc-300 bg-zinc-900 px-2.5 py-0.5 rounded-full border border-zinc-800">
                       {activeProject.category}
                     </span>
-                    <span className="text-xs text-zinc-550 font-mono">Details</span>
                   </div>
-                  <button
-                    onClick={() => setActiveProject(null)}
-                    className="p-1 px-1.5 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 hover:border-zinc-750 text-zinc-400 hover:text-white rounded-md transition cursor-pointer"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => navigateTo(activeIndex - 1)}
+                      disabled={activeIndex <= 0}
+                      className="p-1 px-1.5 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 hover:border-zinc-750 text-zinc-400 hover:text-white rounded-md transition cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <span className="text-[10px] font-mono text-zinc-500 tabular-nums">
+                      {activeIndex + 1} / {filteredProjects.length}
+                    </span>
+                    <button
+                      onClick={() => navigateTo(activeIndex + 1)}
+                      disabled={activeIndex >= filteredProjects.length - 1}
+                      className="p-1 px-1.5 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 hover:border-zinc-750 text-zinc-400 hover:text-white rounded-md transition cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => setActiveProject(null)}
+                      className="p-1 px-1.5 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 hover:border-zinc-750 text-zinc-400 hover:text-white rounded-md transition cursor-pointer ml-1"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
 
                 {/* Modal main body */}
