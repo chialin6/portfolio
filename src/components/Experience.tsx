@@ -9,7 +9,8 @@ import { Briefcase, Calendar, MapPin, ChevronDown, ChevronUp, Star, Award, Exter
 import { experienceData } from "../data";
 
 export default function Experience() {
-  const [expandedJobId, setExpandedJobId] = useState<string | null>("exp-1");
+  // If want to set auto-expand on landing, add the id to below
+  const [expandedJobId, setExpandedJobId] = useState<string | null>(null);
 
   const toggleExpand = (id: string) => {
     if (expandedJobId === id) {
@@ -20,7 +21,7 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="py-24 bg-zinc-900 border-t border-zinc-800 text-zinc-100 relative">
+    <section id="experience" className="py-24 scroll-mt-20 bg-zinc-900 border-t border-zinc-800 text-zinc-100 relative">
       <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-zinc-800/5 blur-[100px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6">
@@ -39,14 +40,14 @@ export default function Experience() {
         </div>
 
         {/* Timeline representation layout */}
-        <div className="relative border-l border-zinc-800 ml-4 md:ml-6 pl-6 md:pl-10 space-y-10 py-4 max-w-3xl">
+        <div className="relative border-l border-zinc-800 ml-6 pl-10 space-y-10 py-4 max-w-3xl">
           {experienceData.map((job, idx) => {
             const isExpanded = expandedJobId === job.id;
 
             return (
               <div key={job.id} className="relative group">
                 {/* Timeline node icon */}
-                <div className={`absolute -left-12 md:-left-[48px] top-1 h-8 w-8 rounded-full border flex items-center justify-center transition duration-300 ${
+                <div className={`absolute -left-[48px] top-1 h-8 w-8 rounded-full border flex items-center justify-center transition duration-300 ${
                   isExpanded 
                     ? "bg-zinc-950 text-white border-zinc-700" 
                     : "bg-zinc-900 text-zinc-400 border-zinc-800 group-hover:border-zinc-750"

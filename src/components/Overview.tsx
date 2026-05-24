@@ -57,7 +57,7 @@ export default function Overview() {
 
       <div className="max-w-6xl mx-auto px-6 w-full relative z-10 flex flex-col justify-between h-full">
         {/* Navigation rail / Tech Meta row */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-16 border-b border-zinc-900 pb-6 text-xs text-zinc-400 font-mono">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-16 border-b border-zinc-900 pb-6 text-xs text-zinc-400 font-mono">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-zinc-300 animate-pulse" />
             <span>JAELYN // PORTFOLIO</span>
@@ -199,7 +199,7 @@ export default function Overview() {
               />
 
               {/* Code strip */}
-              <div className="px-5 py-4 font-mono text-xs text-zinc-300 leading-6 border-t border-zinc-800 bg-zinc-950">
+              <div className="hidden sm:block px-5 py-4 font-mono text-xs text-zinc-300 leading-6 border-t border-zinc-800 bg-zinc-950">
                 <p className="text-zinc-600">// currently</p>
                 <p>
                   <span className="text-pink-400">struct</span> <span className="text-zinc-100">Jaelyn</span> {"{"}
