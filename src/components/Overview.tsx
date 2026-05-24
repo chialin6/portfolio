@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { Github, Linkedin, Mail, MapPin, Calendar, Terminal, ArrowDown, ChevronRight, CheckCircle, Download } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Calendar, ArrowDown, ChevronRight, CheckCircle, Download } from "lucide-react";
 import { profileInfo } from "../data";
 
 export default function Overview() {
@@ -45,7 +45,7 @@ export default function Overview() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 100, damping: 15 }
+      transition: { type: "spring" as const, stiffness: 100, damping: 15 }
     }
   };
 
@@ -104,11 +104,11 @@ export default function Overview() {
 
             {/* Action Buttons */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mt-2">
-              <a 
-                href="#projects" 
+              <a
+                href="#skills"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-zinc-200 text-black font-semibold rounded-lg shadow-lg shadow-zinc-500/5 transition duration-200 text-sm cursor-pointer"
               >
-                <span>View My Work</span>
+                <span>Learn More</span>
                 <ChevronRight className="w-4 h-4" />
               </a>
               <button
@@ -128,7 +128,7 @@ export default function Overview() {
                 )}
               </button>
               <a
-                href="/jaelyn_resume_2026.pdf"
+                href={`${import.meta.env.BASE_URL}jaelyn_resume_2026.pdf`}
                 download
                 className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white font-medium rounded-lg transition duration-200 text-sm cursor-pointer"
               >
@@ -172,70 +172,49 @@ export default function Overview() {
             </motion.div>
           </motion.div>
 
-          {/* Styled Tech Console Mockup */}
-          <motion.div 
+          {/* Profile Photo */}
+          <motion.div
             className="lg:col-span-5 w-full pr-0 lg:pr-4"
             initial={{ opacity: 0, scale: 0.95, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.4 }}
+            transition={{ type: "spring" as const, stiffness: 80, damping: 15, delay: 0.4 }}
           >
-            <div className="glow-effect rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl relative">
-              {/* Header bar */}
+            <div className="glow-effect rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl">
+              {/* Dots header bar */}
               <div className="flex items-center justify-between px-4 py-3 bg-zinc-950 border-b border-zinc-800">
                 <div className="flex items-center gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
                   <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
                   <div className="w-2.5 h-2.5 rounded-full bg-zinc-650" />
                 </div>
-                <div className="flex items-center gap-1.5 text-[10px] text-zinc-500 font-mono">
-                  <Terminal className="w-3 h-3 text-zinc-300" />
-                  <span>developer.sh</span>
-                </div>
-                <div className="w-12 h-2" /> {/* Spacer */}
+                <span className="text-[10px] text-zinc-500 font-mono">{profileInfo.name}</span>
+                <div className="w-12 h-2" />
               </div>
 
-              {/* Code/Terminal Content */}
-              <div className="p-5 font-mono text-xs text-zinc-300 leading-6 overflow-x-auto">
-                <p className="text-zinc-500">// Welcome. Initialize core variables</p>
-                <p>
-                  <span className="text-pink-400">const</span> developer = {"{"}
-                </p>
-                <p className="pl-4">
-                  name: <span className="text-zinc-100">"{profileInfo.name}"</span>,
-                </p>
-                <p className="pl-4">
-                  role: <span className="text-zinc-100">"Backend Systems & APIs"</span>,
-                </p>
-                <p className="pl-4">
-                  specialty: <span className="text-zinc-100">"Python / Ruby / Java"</span>,
-                </p>
-                <p className="pl-4">
-                  distributed: <span className="text-white">true</span>,
-                </p>
-                <p className="pl-4">
-                  experienceYears: <span className="text-white font-semibold">5+</span>,
-                </p>
-                <p className="pl-4">
-                  architectureStyle: <span className="text-zinc-100">"Event-Driven, Microservices"</span>
-                </p>
-                <p>{"};"}</p>
-                
-                <p className="mt-4 text-slate-500">// Current availability check</p>
-                <p>
-                  <span className="text-pink-400">if</span> (developer.openToOpportunities) {"{"}
-                </p>
-                <p className="pl-4 text-zinc-300">
-                  console.log(<span className="text-white">"Let's build something exceptional."</span>);
-                </p>
-                <p className="pl-4 text-zinc-300">
-                  initiateMeeting({`{ mode: 'direct_chat' }`});
-                </p>
-                <p>{"}"}</p>
+              {/* Landscape photo */}
+              <img
+                src={`${import.meta.env.BASE_URL}profile.jpg`}
+                alt={profileInfo.avatarAlt}
+                className="w-full object-cover object-center aspect-[3/2]"
+              />
 
-                <div className="mt-5 pt-3 border-t border-zinc-800 flex justify-between items-center text-[10px] text-zinc-500">
-                  <span>Shell: bash v5.1</span>
-                  <span className="text-zinc-400">READY_PID_2026</span>
-                </div>
+              {/* Code strip */}
+              <div className="px-5 py-4 font-mono text-xs text-zinc-300 leading-6 border-t border-zinc-800 bg-zinc-950">
+                <p className="text-zinc-600">// currently</p>
+                <p>
+                  <span className="text-pink-400">struct</span> <span className="text-zinc-100">Jaelyn</span> {"{"}
+                </p>
+                <p className="pl-4">
+                  <span className="text-pink-400">std::string</span> role{"  "} = <span className="text-zinc-100">"Backend Engineer"</span>;
+                </p>
+                <p className="pl-4">
+                  <span className="text-pink-400">std::string</span> based = <span className="text-zinc-100">"New York, NY"</span>;
+                </p>
+                <p className="pl-4">
+                  <span className="text-pink-400">std::string</span> status = <span className="text-zinc-300">"having_fun"</span>;
+                </p>
+                <p>{"};"}  </p>
+                <p className="mt-1"><span className="text-zinc-100">Jaelyn</span> me;</p>
               </div>
             </div>
           </motion.div>
