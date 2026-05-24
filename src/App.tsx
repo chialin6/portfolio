@@ -56,7 +56,7 @@ export default function App() {
   const menuItems = [
     { id: "overview", label: "OVERVIEW" },
     { id: "skills", label: "SKILLS" },
-    { id: "experience", label: "CAREER" },
+    { id: "experience", label: "WORK" },
     { id: "projects", label: "PROJECTS" },
   ];
 

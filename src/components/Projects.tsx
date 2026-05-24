@@ -27,7 +27,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 bg-zinc-950 border-t border-zinc-900 text-zinc-100 relative">
+    <section id="projects" className="py-24 scroll-mt-20 bg-zinc-950 border-t border-zinc-900 text-zinc-100 relative">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] rounded-full bg-zinc-800/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6">
