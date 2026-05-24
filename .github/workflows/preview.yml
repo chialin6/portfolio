@@ -26,13 +26,16 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
+        if: github.event.action != 'closed'
         run: npm ci
 
       - name: Build Project
+        if: github.event.action != 'closed'
         run: npm run build
 
       - name: Deploy Preview
         uses: rossjansen/deploy-pr-preview@v3
         with:
-          source-dir: dist # Vite outputs the build here
+          token: ${{ secrets.GITHUB_TOKEN }}
+          source-dir: dist
           preview-branch: gh-pages
