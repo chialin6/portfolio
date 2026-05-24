@@ -145,7 +145,6 @@ export default function Projects() {
                     <span className="text-xs font-mono text-zinc-300 bg-zinc-900 px-2.5 py-0.5 rounded-full border border-zinc-800">
                       {activeProject.category}
                     </span>
-                    <span className="text-xs text-zinc-550 font-mono">Details</span>
                   </div>
                   <button
                     onClick={() => setActiveProject(null)}
