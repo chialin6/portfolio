@@ -19,7 +19,7 @@ export default function About() {
 
   return (
     <section id="skills" className="py-24 scroll-mt-20 bg-zinc-900 border-t border-zinc-800 text-zinc-100 relative">
-      <div className="absolute top-1/3 right-10 w-96 h-96 rounded-full bg-zinc-800/5 blur-[100px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/3 right-10 w-96 h-96 rounded-full bg-zinc-800/5 blur-[100px] pointer-events-none" />
       
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Heading */}

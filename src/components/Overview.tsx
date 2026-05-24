@@ -52,8 +52,8 @@ export default function Overview() {
   return (
     <section id="overview" className="relative min-h-screen flex flex-col justify-center py-16 bg-zinc-950 text-zinc-100 overflow-hidden">
       {/* Abstract sleek background ambient circles */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] rounded-full bg-zinc-800/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-zinc-900/5 blur-[140px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] rounded-full bg-zinc-800/5 blur-[120px] pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-zinc-900/5 blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 w-full relative z-10 flex flex-col justify-between h-full">
         {/* Navigation rail / Tech Meta row */}

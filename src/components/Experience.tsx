@@ -22,7 +22,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-24 scroll-mt-20 bg-zinc-900 border-t border-zinc-800 text-zinc-100 relative">
-      <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-zinc-800/5 blur-[100px] pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-10 left-10 w-96 h-96 rounded-full bg-zinc-800/5 blur-[100px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Heading */}
