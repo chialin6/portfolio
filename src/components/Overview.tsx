@@ -83,7 +83,7 @@ export default function Overview() {
             <motion.div variants={itemVariants} className="inline-flex">
               <span className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900/80 border border-zinc-800 rounded-full text-xs text-zinc-300 font-medium pt-1 pb-1">
                 <span className="w-2 h-2 rounded-full bg-zinc-300 animate-pulse" />
-                <span>Open to New Engagements</span>
+                <span>Open to Work</span>
               </span>
             </motion.div>
 
