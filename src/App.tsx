@@ -49,14 +49,14 @@ export default function App() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const menuItems = [
     { id: "overview", label: "OVERVIEW" },
     { id: "skills", label: "SKILLS" },
-    { id: "experience", label: "CAREER" },
+    { id: "experience", label: "WORK" },
     { id: "projects", label: "PROJECTS" },
   ];
 

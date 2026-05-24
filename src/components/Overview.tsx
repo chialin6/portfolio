@@ -52,12 +52,12 @@ export default function Overview() {
   return (
     <section id="overview" className="relative min-h-screen flex flex-col justify-center py-16 bg-zinc-950 text-zinc-100 overflow-hidden">
       {/* Abstract sleek background ambient circles */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] rounded-full bg-zinc-800/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-zinc-900/5 blur-[140px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] rounded-full bg-zinc-800/5 blur-[120px] pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-zinc-900/5 blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 w-full relative z-10 flex flex-col justify-between h-full">
         {/* Navigation rail / Tech Meta row */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-16 border-b border-zinc-900 pb-6 text-xs text-zinc-400 font-mono">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-16 border-b border-zinc-900 pb-6 text-xs text-zinc-400 font-mono">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-zinc-300 animate-pulse" />
             <span>JAELYN // PORTFOLIO</span>
@@ -83,7 +83,7 @@ export default function Overview() {
             <motion.div variants={itemVariants} className="inline-flex">
               <span className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900/80 border border-zinc-800 rounded-full text-xs text-zinc-300 font-medium pt-1 pb-1">
                 <span className="w-2 h-2 rounded-full bg-zinc-300 animate-pulse" />
-                <span>Open to New Engagements</span>
+                <span>Open to Work</span>
               </span>
             </motion.div>
 
