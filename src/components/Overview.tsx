@@ -108,7 +108,7 @@ export default function Overview() {
                 href="#skills"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-zinc-200 text-black font-semibold rounded-lg shadow-lg shadow-zinc-500/5 transition duration-200 text-sm cursor-pointer"
               >
-                <span>Learn More</span>
+                <span>More About Me</span>
                 <ChevronRight className="w-4 h-4" />
               </a>
               <button
@@ -223,7 +223,7 @@ export default function Overview() {
         {/* Scroll down mouse indicator */}
         <div className="hidden sm:flex justify-center items-center mt-12 animate-bounce">
           <a href="#skills" className="flex flex-col items-center gap-1.5 text-xs text-zinc-500 hover:text-white transition">
-            <span>Discover My Work</span>
+            <span>Discover More</span>
             <ArrowDown className="w-4 h-4 text-zinc-250 animate-bounce" />
           </a>
         </div>
