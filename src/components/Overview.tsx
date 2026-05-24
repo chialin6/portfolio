@@ -108,7 +108,7 @@ export default function Overview() {
                 href="#skills"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-zinc-200 text-black font-semibold rounded-lg shadow-lg shadow-zinc-500/5 transition duration-200 text-sm cursor-pointer"
               >
-                <span>Learn More</span>
+                <span>More About Me</span>
                 <ChevronRight className="w-4 h-4" />
               </a>
               <button

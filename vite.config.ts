@@ -4,19 +4,8 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
-  // Check if this is a GitHub Actions pull request build
-  const isPR = process.env.GITHUB_EVENT_NAME === 'pull_request';
-  
-  // Extract the PR number (e.g., "refs/pull/12/merge" becomes "12")
-  const prNumber = process.env.GITHUB_REF_NAME 
-    ? process.env.GITHUB_REF_NAME.split('/')[0] 
-    : '';
-
-  // Use the PR path for previews, otherwise fall back to your standard portfolio path
-  const baseConfig = isPR ? `/portfolio/pull/${prNumber}/` : '/portfolio/';
-
   return {
-    base: baseConfig, 
+    base: process.env.BASE_URL ?? "/", 
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
