@@ -1,31 +1,54 @@
-# .github/workflows/preview.yml
-name: Deploy PR previews
+name: Deploy PR Preview
 
 on:
-    pull_request:
-        types:
-            - opened
-            - reopened
-            - synchronize
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
 
-concurrency: preview-${{ github.ref }}
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-    deploy-preview:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            - name: Install and Build
-              if: github.event.action != 'closed' # We don't need the build if we know the preview will be removed
-              run: |
-                  npm install
-                  npm run build
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
 
-            - name: Deploy preview
-              uses: rossjrw/pr-preview-action@v1
-              with:
-                  source-dir: ./build/
-                  preview-branch: main
-                  qr-code: true
+      - name: Install Dependencies
+        if: github.event.action != 'closed'
+        run: npm ci
+
+      - name: Build Project
+        if: github.event.action != 'closed'
+        run: npm run build
+
+      - name: Deploy Preview
+        if: github.event.action != 'closed'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: dist
+          target-folder: pull/${{ github.event.pull_request.number }}
+          clean: false
+
+      - name: Cleanup Preview
+        if: github.event.action == 'closed'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: dist
+          target-folder: pull/${{ github.event.pull_request.number }}
+          clean: true
